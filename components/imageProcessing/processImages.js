@@ -9,12 +9,17 @@ async function processImages(directory) {
   try {
     const files = await fs.readdir(directory);
 
+    // Construct the path to the local executable using __dirname
+    const pal2PacEPath = path.join(__dirname, '..', '..', 'vendor', 'Pal2PacE.exe');
+
     // Map all file processing promises
     const processingPromises = files
       .filter(file => path.extname(file).toLowerCase() === '.png')
       .map(async file => {
         const baseName = path.basename(file, '.png');
-        const command = `.\\vendor\\Pal2PacE "${path.join(directory, baseName)}.png" "${path.join(directory, baseName)}.paa"`;
+        
+        // Correct the command to use the absolute path to the executable
+        const command = `"${pal2PacEPath}" "${path.join(directory, baseName)}.png" "${path.join(directory, baseName)}.paa"`;
 
         try {
           const { stdout, stderr } = await exec(command);

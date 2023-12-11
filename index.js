@@ -27,7 +27,7 @@ function createWindow () {
   })
   win.setMenuBarVisibility(false);
   win.setResizable(false);
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
 
   // Load the index.html of the app.
