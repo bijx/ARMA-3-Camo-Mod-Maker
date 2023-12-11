@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello Electron</title>
+    <title>Arma 3 Camo Mod Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Hello, Electron!</h1>
-    <p>Welcome to your first Electron application.</p>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="App Logo" class="logo">
+            <h1>Arma 3 Mod Generator</h1>
+        </header>
+
+        <form id="modForm">
+            <div class="form-group">
+                <label for="modName">Mod Name:</label>
+                <input type="text" id="modName" name="modName">
+            </div>
+
+            <div class="form-group">
+                <label for="authorName">Author Name:</label>
+                <input type="text" id="authorName" name="authorName">
+            </div>
+
+            <div class="form-group">
+                <label for="textureFile">Texture File:</label>
+                <input type="file" id="textureFile" name="textureFile" accept=".png">
+            </div>
+
+            <fieldset class="checkbox-group" disabled>
+                <legend>Included in Mod</legend>
+                <label><input type="checkbox" name="uniform" checked> Uniform</label>
+                <label><input type="checkbox" name="weapons"> Basic Weapons</label>
+                <label><input type="checkbox" name="vehicle"> Transport Vehicle</label>
+            </fieldset>
+
+            <fieldset class="checkbox-group">
+                <legend>Options</legend>
+                <label><input type="checkbox" name="blendUniform" checked> Blend Uniform with Normal</label>
+            </fieldset>
+
+            <div class="form-group">
+                <button type="button" id="createModButton">Create Mod</button>
+            </div>
+
+            <progress id="progressBar" value="0" max="100"></progress>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

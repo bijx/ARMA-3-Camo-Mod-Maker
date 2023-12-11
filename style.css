@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 400px;
+}
+
+header {
+  text-align: center;
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+}
+
+.checkbox-group {
+  border: 1px solid #444;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.checkbox-group legend {
+  color: #bbb;
+}
+
+#progressBar {
+  width: 100%;
+  height: 20px;
+  background-color: #555;
+  display: none;
+}
+
+/* Add more styling as needed */

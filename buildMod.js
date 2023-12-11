@@ -16,20 +16,18 @@ const normalImagePath = './assets/baseTextures/normals.png'; // Path to the norm
 
 const outputPath = './assets/output'; // Path to output folder
 
-async function main() {
+async function main(className, author, options = {}, onProgress) {
   // Create the layered texture and icon
+  onProgress(10);
   await Promise.all([
-    createLayeredTexture(baseImagePath, textureImagePath, normalImagePath, `${outputPath}/uniform_co.png`, {blendNormal: true}),
+    createLayeredTexture(baseImagePath, textureImagePath, normalImagePath, `${outputPath}/uniform_co.png`, {blendedNormal: options?.blendNormal ?? false}),
     makeIcon(textureImagePath, `${outputPath}/icon.png`),
   ]);
+  onProgress(65);
 
   // Convert images to .paa files (using Pal2PacE)
   await processImages(outputPath);
-
-
-  // Parameters for generateConfig (example values)
-  const className = "Bijx's Cool Texture Mod";
-  const author = 'bijx';
+  onProgress(100);
   
   // Generate config.cpp content and mod manifest
   const configContent = generateConfig(className, author);
@@ -68,4 +66,4 @@ async function main() {
 
 }
 
-main();
+module.exports = main;

@@ -1,3 +1,4 @@
 /node_modules
 /test
-/assets/output
+/assets/output/*
+/texture/*
