@@ -14,7 +14,7 @@ async function processImages(directory) {
       .filter(file => path.extname(file).toLowerCase() === '.png')
       .map(async file => {
         const baseName = path.basename(file, '.png');
-        const command = `.\\vendor\\Pal2PacE.exe "${path.join(directory, baseName)}.png" "${path.join(directory, baseName)}.paa"`;
+        const command = `.\\vendor\\Pal2PacE "${path.join(directory, baseName)}.png" "${path.join(directory, baseName)}.paa"`;
 
         try {
           const { stdout, stderr } = await exec(command);
@@ -23,6 +23,7 @@ async function processImages(directory) {
           if (stderr) console.error(`stderr: ${stderr}`);
         } catch (error) {
           console.error(`Error executing command for file ${file}:`, error);
+          throw error;
         }
       });
 
@@ -30,6 +31,7 @@ async function processImages(directory) {
     await Promise.all(processingPromises);
   } catch (err) {
     console.error('Error:', err);
+    throw err;
   }
 }
 
