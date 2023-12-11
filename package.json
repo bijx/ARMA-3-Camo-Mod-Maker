@@ -1,0 +1,21 @@
+{
+  "name": "camo-mod-maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "img2pac": "^0.1.0",
+    "jimp": "^0.22.10"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}
