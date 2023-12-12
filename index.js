@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const { ipcMain } = require('electron');
 const main = require('./buildMod');
+const path = require('path');
 
 let win; // Keep a reference to the main window
 
@@ -18,15 +19,17 @@ ipcMain.on('create-mod', async (event, args) => {
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 500,
+    height: 700,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
-    }
+    },
+    icon: path.join(__dirname, 'logo.png')
   })
   win.setMenuBarVisibility(false);
   win.setResizable(false);
+  
   // win.webContents.openDevTools()
 
 

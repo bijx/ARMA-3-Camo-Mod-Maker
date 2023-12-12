@@ -39,8 +39,8 @@ async function blendImages(base, texture, normal, outputImagePath, options = {})
     opacitySource: 1,
   });
 
-  // Apply a brightness adjustment if needed
-  blendedNormal.brightness(0.05); // Adjust brightness if needed
+  // Apply a brightness adjustment
+  blendedNormal.brightness(0.05);
 
   // Read the base image and composite it on top
   const baseImage = await Jimp.read(base);
@@ -49,6 +49,7 @@ async function blendImages(base, texture, normal, outputImagePath, options = {})
     opacityDest: 1,
     opacitySource: 1,
   });
+
 
   // Write the final image to the output
   await finalImage.writeAsync(outputImagePath);
