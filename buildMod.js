@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
-const generateConfig = require('./components/configGeneraton/generateConfig');
+const generateConfig = require('./components/configGeneraton/modConfigFactory');
 
 // Image conversion and manipulation
-const createLayeredTexture = require('./components/textureGeneration/createLayeredTexture');
-const convertToPaa = require('./components/imageProcessing/convertToPaa');
+const createBaseUniform = require('./components/textureGeneration/createBaseUniform');
 const makeIcon = require('./components/textureGeneration/makeIcon');
 const classNameify = require('./utils/classNameify');
 const processImages = require('./components/imageProcessing/processImages');
@@ -16,18 +15,37 @@ const assetsBasePath = path.join(__dirname, 'assets', 'baseTextures');
 const textureDirPath = path.join(__dirname, 'texture');
 const outputPath = path.join(__dirname, 'assets', 'output');
 
-// Use the base paths to construct the full paths to the images
-const baseImagePath = path.join(assetsBasePath, 'base.png');
-const textureImagePath = path.join(textureDirPath, 'texture.png');
-const normalImagePath = path.join(assetsBasePath, 'normals.png');
+// Use the base path to construct the full path to the texture
+const texture = path.join(textureDirPath, 'texture.png');
 
 async function main(className, author, options = {}, onProgress) {
-  // Update paths in the functions that create textures and icons
   onProgress(10);
-  await Promise.all([
-    createLayeredTexture(baseImagePath, textureImagePath, normalImagePath, path.join(outputPath, 'uniform_co.png'), { blendedNormal: options?.blendNormal ?? false }),
-    makeIcon(textureImagePath, path.join(outputPath, 'icon.png')),
-  ]);
+
+  const addonFunctions = {
+    baseUniform: () => createBaseUniform(
+      path.join(assetsBasePath, 'baseUniform', 'base.png'),
+      texture,
+      path.join(assetsBasePath, 'baseUniform', 'normals.png'),
+      path.join(outputPath, 'uniform_base_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
+    indepUniform: () => createBaseUniform(
+      path.join(assetsBasePath, 'indepUniform', 'indepUniformBase.png'),
+      texture,
+      path.join(assetsBasePath, 'indepUniform', 'indepUniformNormals.png'),
+      path.join(outputPath, 'uniform_indep_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
+  };
+
+  const promises = options?.addons
+    .filter(addon => addonFunctions[addon])
+    .map(addon => addonFunctions[addon]());
+
+  // Always add the makeIcon function to the promises
+  promises.push(makeIcon(texture, path.join(outputPath, 'icon.png')));
+
+  await Promise.all(promises);
   onProgress(65);
 
   // Convert images to .paa files (using Pal2PacE)
@@ -35,7 +53,7 @@ async function main(className, author, options = {}, onProgress) {
   onProgress(100);
 
   // Generate config.cpp content and mod manifest
-  const configContent = generateConfig(className, author);
+  const configContent = generateConfig(className, author, options?.addons ?? []);
   const modManifest = generateModManifest(className, author);
 
   // Create a zip file
@@ -56,9 +74,15 @@ async function main(className, author, options = {}, onProgress) {
   archive.append(configContent, { name: `${classifyName}/config.cpp` });
 
   // Create folder structure before building addon
-  archive.append(fs.createReadStream(path.join(outputPath, 'uniform_co.paa')), { name: `${classifyName}/Data/uniform_co.paa` });
   archive.append(fs.createReadStream(path.join(outputPath, 'icon.paa')), { name: `${classifyName}/UI/icon.paa` });
-  archive.append(fs.createReadStream(path.join(assetsBasePath, 'custom_camo.rvmat')), { name: `${classifyName}/Data/custom_camo.rvmat` });
+  if(options?.addons?.includes('baseUniform')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'uniform_base_co.paa')), { name: `${classifyName}/Data/uniform_base_co.paa` });
+    archive.append(fs.createReadStream(path.join(assetsBasePath, 'baseUniform', 'custom_camo_base.rvmat')), { name: `${classifyName}/Data/custom_camo_base.rvmat` });
+  }
+  if(options?.addons?.includes('indepUniform')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'uniform_indep_co.paa')), { name: `${classifyName}/Data/uniform_indep_co.paa` });
+    archive.append(fs.createReadStream(path.join(assetsBasePath, 'indepUniform', 'indepUniform.rvmat')), { name: `${classifyName}/Data/indepUniform.rvmat` });  
+  }
 
   // Create post-build addon file structure
   archive.append(modManifest, { name: `@${classifyName}/mod.cpp` });

@@ -1,6 +1,7 @@
 const toPAC = require('img2pac');
 
 /**
+ * DEPRECATED: Use processImages instead.
  * Converts an image file to PAA format using img2pac library.
  * @param {string} inputPath - The path of the input image file.
  * @param {string} outputPath - The path where the converted PAA file will be saved.
