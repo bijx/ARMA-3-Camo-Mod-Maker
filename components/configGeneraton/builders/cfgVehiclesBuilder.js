@@ -1,3 +1,11 @@
+/**
+ * Generates the configuration for the vehicles in the mod.
+ *
+ * @param {string} className - The class name of the vehicles.
+ * @param {string} author - The author of the mod.
+ * @param {string[]} addons - The addons to include in the configuration.
+ * @returns {string} - The generated configuration for the vehicles.
+ */
 module.exports = function cfgVehiclesBuilder(className, author, addons) {
 
   const addonsMappings = {

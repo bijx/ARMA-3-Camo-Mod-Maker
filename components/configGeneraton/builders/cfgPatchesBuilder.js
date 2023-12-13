@@ -1,4 +1,10 @@
 
+/**
+ * Builds the CfgPatches class for the mod.
+ * @param {string} className - The name of the mod's class.
+ * @param {string[]} addons - An array of addon names.
+ * @returns {string} - The generated CfgPatches class as a string.
+ */
 module.exports = function cfgPatchesBuilder(className, addons) {
   const addonMappings = {
     baseUniform: 'A3_Characters_F',

@@ -5,6 +5,12 @@ const path = require('path');
 
 const exec = promisify(execCallback);
 
+/**
+ * Converts images from PNG to PAA in a specified directory using Pal2PacE executable.
+ * @param {string} directory - The directory containing the images to be processed.
+ * @returns {Promise<void>} - A promise that resolves when all images have been processed.
+ * @throws {Error} - If there is an error during the image processing.
+ */
 async function processImages(directory) {
   try {
     const files = await fs.readdir(directory);

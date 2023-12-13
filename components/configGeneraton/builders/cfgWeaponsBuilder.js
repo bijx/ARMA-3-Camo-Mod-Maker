@@ -1,3 +1,10 @@
+/**
+ * Generates the cfgWeapons code block for a given className and addons.
+ *
+ * @param {string} className - The name of the class.
+ * @param {string[]} addons - An array of addon names.
+ * @returns {string} The generated cfgWeapons code block.
+ */
 module.exports = function cfgWeaponsBuilder(className, addons) {
 
   const addonsMappings = {

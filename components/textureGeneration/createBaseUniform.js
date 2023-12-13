@@ -2,10 +2,17 @@ const Jimp = require('jimp');
 const path = require('path');
 const tileTexture = require('./util/tileTexture');
 
+/**
+ * Blends images to create a gane texture.
+ * @param {string} base - The path to the base image.
+ * @param {string} texture - The path to the texture image.
+ * @param {string} normal - The path to the normal map image.
+ * @param {string} outputImagePath - The path to save the output image.
+ * @param {Object} options - Additional options for blending.
+ * @param {boolean} options.blendNormal - Whether to blend the normal map with the texture using overlay mode. Default is false.
+ * @returns {Promise<void>} - A promise that resolves when the output image is created successfully.
+ */
 async function blendImagesBase(base, texture, normal, outputImagePath, options = {}) {
-
-
-
   const { blendNormal = false } = options;
 
   // Read the normal map and tile the texture
