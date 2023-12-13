@@ -19,7 +19,7 @@ const outputPath = path.join(__dirname, 'assets', 'output');
 const texture = path.join(textureDirPath, 'texture.png');
 
 async function main(className, author, options = {}, onProgress) {
-  onProgress(10);
+  onProgress({ value: 10, message: 'Generating game texture files and config...' });
 
   const addonFunctions = {
     baseUniform: () => createBaseUniform(
@@ -46,11 +46,11 @@ async function main(className, author, options = {}, onProgress) {
   promises.push(makeIcon(texture, path.join(outputPath, 'icon.png')));
 
   await Promise.all(promises);
-  onProgress(65);
+  onProgress({ value: 65, message: 'Converting textures to PAA using Pac2PalE...' });
 
   // Convert images to .paa files (using Pal2PacE)
   await processImages(outputPath);
-  onProgress(100);
+  onProgress({ value: 100, message: 'Building addon archive file...' });
 
   // Generate config.cpp content and mod manifest
   const configContent = generateConfig(className, author, options?.addons ?? []);

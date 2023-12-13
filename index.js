@@ -7,8 +7,8 @@ let win; // Keep a reference to the main window
 
 ipcMain.on('create-mod', async (event, args) => {
   try {
-    await main(args.className, args.author, args.options, (progressValue) => {
-      win.webContents.send('update-progress', progressValue);
+    await main(args.className, args.author, args.options, (progress) => {
+      win.webContents.send('update-progress', progress);
     });
     event.reply('create-mod-reply', 'success');
   } catch (error) {
