@@ -39,6 +39,10 @@ function createWindow () {
 
 app.whenReady().then(createWindow)
 
+
+// TODO: Remove these since we don't support macOS.
+// Support can be re-added later if image processing is changed from Pal2PacE to Gruppe Adler's image processing library.
+
 // Quit when all windows are closed, except on macOS.
 app.on('window-all-closed', () => {
   if (process.platform !== 'Darwin') app.quit()
