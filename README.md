@@ -7,15 +7,15 @@ A standalone application that allows you to create a uniform addon for ARMA 3 ba
 ## Quickstart
 
 ## Planned Features
-- [ ] Use Gruppe-Adler image to paa script instead of Pac2PalE executable.
-- [ ] Implement custom PBO packager (possibly Gruppe-Adler PBO script).
 - [ ] Ability to change base uniform color from black.
 - [ ] Ability to create custom camo vehicles and weapons.
 - [ ] New uniform styles
   - [x] Independent Uniform
 - [x] Add program logo to output icon
 - [ ] Implement Hellcat Helicopter
-- [ ] Add status to progress bar
+- [x] Add status to progress bar
+- [ ] Use Gruppe-Adler image to paa script instead of Pac2PalE executable.
+- [ ] Implement custom PBO packager (possibly Gruppe-Adler PBO script).
 
 ## Developer Notes
 Each addon that can be included in the final mod has a specific internal name to identify it in the code.

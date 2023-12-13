@@ -2,9 +2,11 @@ const { ipcRenderer } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
-ipcRenderer.on('update-progress', (event, progressValue) => {
+ipcRenderer.on('update-progress', (event, progress) => {
   const progressBar = document.getElementById('progressBar');
-  progressBar.value = progressValue;
+  const progressStatus = document.getElementById('progressStatus');
+  progressBar.value = progress.value;
+  progressStatus.innerText = progress.message;
 });
 
 document.getElementById('createModButton').addEventListener('click', function() {
@@ -31,6 +33,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
 
   // Show loading bar
   document.getElementById('progressBar').style.display = 'block';
+  document.getElementById('progressStatus').style.display = 'block';
 
   // Copy the image file to the texture folder
   const destinationPath = path.join(__dirname, 'texture/texture.png');
@@ -52,5 +55,6 @@ document.getElementById('createModButton').addEventListener('click', function() 
     }
     // Hide loading bar
     document.getElementById('progressBar').style.display = 'none';
+    document.getElementById('progressStatus').style.display = 'none';
   });
 });
