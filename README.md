@@ -11,3 +11,5 @@ A standalone application that allows you to create a uniform addon for ARMA 3 ba
 - [ ] Implement custom PBO packager (possibly Gruppe-Adler PBO script).
 - [ ] Ability to change base uniform color from black.
 - [ ] Ability to create custom camo vehicles and weapons.
+- [ ] Implement Hellcat Helicopter
+- [ ] New uniform styles: VR Suit, 

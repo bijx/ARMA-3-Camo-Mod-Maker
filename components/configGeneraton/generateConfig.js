@@ -3,6 +3,10 @@ const classNameify = require('../../utils/classNameify');
 function generateConfig(classNameRaw, author) {
   const className = classNameify(classNameRaw);
   return `
+/* 
+  This mod was created using the ARMA 3 Camo Mod Generator by bijx.
+  Create your own mod in seconds at <>
+*/
 class CfgPatches 
 { 
     class ${className} 
