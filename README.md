@@ -9,8 +9,9 @@ A standalone application that allows you to create a uniform addon for ARMA 3 ba
 ## Planned Features
 - [ ] Ability to change base uniform color from black.
 - [ ] Ability to create custom camo vehicles and weapons.
-- [ ] New uniform styles
+- [ ] New equipment styles
   - [x] Independent Uniform
+  - [x] Assault Pack
 - [x] Add program logo to output icon
 - [ ] Implement Hellcat Helicopter
 - [x] Add status to progress bar
