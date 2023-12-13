@@ -15,6 +15,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   const textureFile = document.getElementById('textureFile').files[0];
   const includeBaseUniform = document.querySelector('input[name="baseUniform"]').checked;
   const includeIndepUniform = document.querySelector('input[name="indepUniform"]').checked;
+  const includeAssaultPack = document.querySelector('input[name="assaultPack"]').checked;
   const blendedNormals = document.querySelector('input[name="blendUniform"]').checked;
 
   // Check for missing inputs
@@ -42,6 +43,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   let addons = [];
   if (includeBaseUniform) addons.push('baseUniform');
   if (includeIndepUniform) addons.push('indepUniform');
+  if (includeAssaultPack) addons.push('assaultPack');
 
   ipcRenderer.send('create-mod', { className: modName, author: authorName, options: { blendedNormals, addons } });
 

@@ -36,6 +36,13 @@ async function main(className, author, options = {}, onProgress) {
       path.join(outputPath, 'uniform_indep_co.png'),
       { blendNormal: options?.blendedNormals ?? false }
     ),
+    assaultPack: () => createBaseUniform(
+      path.join(assetsBasePath, 'assaultPack', 'assaultPackBase.png'),
+      texture,
+      path.join(assetsBasePath, 'assaultPack', 'assaultPackNormals.png'),
+      path.join(outputPath, 'assault_pack_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
   };
 
   const promises = options?.addons
@@ -82,6 +89,9 @@ async function main(className, author, options = {}, onProgress) {
   if(options?.addons?.includes('indepUniform')) {
     archive.append(fs.createReadStream(path.join(outputPath, 'uniform_indep_co.paa')), { name: `${classifyName}/Data/uniform_indep_co.paa` });
     archive.append(fs.createReadStream(path.join(assetsBasePath, 'indepUniform', 'indepUniform.rvmat')), { name: `${classifyName}/Data/indepUniform.rvmat` });  
+  }
+  if(options?.addons?.includes('assaultPack')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'assault_pack_co.paa')), { name: `${classifyName}/Data/assault_pack_co.paa` });
   }
 
   // Create post-build addon file structure
