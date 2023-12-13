@@ -43,6 +43,26 @@ module.exports = function cfgVehiclesBuilder(className, author, addons) {
         hiddenSelectionsMaterials[] = {"${className}\\Data\\indepUniform.rvmat"};
     };
 `,
+    assaultPack: `
+    class Bag_Base;
+    class B_AssaultPack_Base;
+	class ${className}_AssaultPack: B_AssaultPack_Base
+	{
+		scope=2;
+		author="${author}";
+		model="\A3\\weapons_f\\Ammoboxes\\bags\\Backpack_Compact";
+		displayName="${className} Assault Pack";
+		picture="${className}\\UI\\icon.paa";
+		hiddenSelections[]=
+		{
+			"Camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"${className}\\Data\\assault_pack_co.paa"
+		};
+	};
+`,
   };
 
 
