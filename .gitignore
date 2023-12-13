@@ -2,5 +2,5 @@
 /test
 /assets/output/*
 /texture/*
-/vendor/*
+/vendor/*.exe
 /dist
