@@ -23,5 +23,7 @@ Each addon that can be included in the final mod has a specific internal name to
 
 | Internal Name   | Game Equivalent                                   |
 |-----------------|---------------------------------------------------|
-| `baseUniform`   | `b_soldier_f` - BLUFOR Combat Fatigues (MTP)      |
-| `indepUniform`  | `i_soldier_f` - INDEP Combat Fatigues (AAF)       |
+| `baseUniform`   | `b_soldier_01` - BLUFOR Combat Fatigues (MTP)      |
+| `indepUniform`  | `ia_soldier_01` - INDEP Combat Fatigues (AAF)       |
+| `assaultPack`   | `backpack_compact` - Assault Pack | 
+| `carrierRigSpecial` | `equip_b_carrier_spec_rig` - Carrier Rig Special |

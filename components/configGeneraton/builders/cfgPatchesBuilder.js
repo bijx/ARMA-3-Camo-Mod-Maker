@@ -9,7 +9,8 @@ module.exports = function cfgPatchesBuilder(className, addons) {
   const addonMappings = {
     baseUniform: 'A3_Characters_F',
     indepUniform: 'A3_Characters_F_Beta',
-    indepOfficerUniform: 'A3_Characters_F_Beta',
+    assaultPack: 'A3_Characters_F',
+    carrierRigSpecial: 'A3_Characters_F',
   };
 
   const requiredAddonsArray = Array.from(new Set(addons.map(addon => addonMappings[addon]).filter(Boolean)));

@@ -16,6 +16,8 @@ document.getElementById('createModButton').addEventListener('click', function() 
   const includeBaseUniform = document.querySelector('input[name="baseUniform"]').checked;
   const includeIndepUniform = document.querySelector('input[name="indepUniform"]').checked;
   const includeAssaultPack = document.querySelector('input[name="assaultPack"]').checked;
+  const includeCarrierRig = document.querySelector('input[name="carrierRig"]').checked;
+  const includeSpecialCarrierRig = document.querySelector('input[name="carrierRigSpecial"]').checked;
   const blendedNormals = document.querySelector('input[name="blendUniform"]').checked;
 
   // Check for missing inputs
@@ -44,6 +46,8 @@ document.getElementById('createModButton').addEventListener('click', function() 
   if (includeBaseUniform) addons.push('baseUniform');
   if (includeIndepUniform) addons.push('indepUniform');
   if (includeAssaultPack) addons.push('assaultPack');
+  if (includeSpecialCarrierRig) addons.push('carrierRigSpecial');
+  if (includeCarrierRig) addons.push('carrierRig');
 
   ipcRenderer.send('create-mod', { className: modName, author: authorName, options: { blendedNormals, addons } });
 

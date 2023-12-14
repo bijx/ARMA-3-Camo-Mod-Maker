@@ -1,14 +1,21 @@
 {
   "name": "camo-mod-maker",
+  "productName": "Camo Mod Maker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A tool for creating custom camo mods for Arma 3.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "npx electron-packager . CamoModMaker --platform=win32 --arch=x64 --out=dist --overwrite"
   },
   "keywords": [],
-  "author": "",
+  "repository": "https://github.com/bijx/ARMA-3-Camo-Mod-Maker",
+  "build": {
+    "appId": "com.hyperspc.camomodmaker",
+    "asar": false
+  },
+  "author": "bijx",
   "license": "ISC",
   "dependencies": {
     "archiver": "^6.0.1",

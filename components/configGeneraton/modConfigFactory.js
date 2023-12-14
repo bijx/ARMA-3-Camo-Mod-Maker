@@ -22,7 +22,7 @@ function generateConfig(classNameRaw, author, addons = []) {
 ${headerBuilder()}
 ${cfgPatchesBuilder(className, addons)}
 ${cfgVehiclesBuilder(className, author, addons)}
-${cfgWeaponsBuilder(className, addons)}
+${cfgWeaponsBuilder(className, author, addons)}
 
 
 `;
