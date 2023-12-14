@@ -118,3 +118,5 @@ Thanks to anyone who has contributed domain knowledge, testing efforts, or libra
 - Bohemia Interactive for Arma 3 Tools / Samples
 - IndeedPete's Texture Templates
 - Manofsteal2001 & A Aron for initial testing and feedback.
+
+![](https://imgur.com/G2d2oFp.png)
