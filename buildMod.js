@@ -43,6 +43,27 @@ async function main(className, author, options = {}, onProgress) {
       path.join(outputPath, 'assault_pack_co.png'),
       { blendNormal: options?.blendedNormals ?? false }
     ),
+    carrierRigSpecial: () => createBaseUniform(
+      path.join(assetsBasePath, 'carrierRigSpecial', 'carrierVestSpecialBase.png'),
+      texture,
+      path.join(assetsBasePath, 'carrierRigSpecial', 'carrierVestSpecialNormals.png'),
+      path.join(outputPath, 'carrier_rig_special_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
+    carrierRig: () => createBaseUniform(
+      path.join(assetsBasePath, 'carrierRig', 'carrierRigBase.png'),
+      texture,
+      path.join(assetsBasePath, 'carrierRig', 'carrierRigNormals.png'),
+      path.join(outputPath, 'carrier_rig_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
+    helmetBlufor: () => createBaseUniform(
+      path.join(assetsBasePath, 'helmetBlufor', 'helmetBluforBase.png'),
+      texture,
+      path.join(assetsBasePath, 'helmetBlufor', 'helmetBluforNormals.png'),
+      path.join(outputPath, 'helmet_blufor_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
   };
 
   const promises = options?.addons
@@ -92,6 +113,15 @@ async function main(className, author, options = {}, onProgress) {
   }
   if(options?.addons?.includes('assaultPack')) {
     archive.append(fs.createReadStream(path.join(outputPath, 'assault_pack_co.paa')), { name: `${classifyName}/Data/assault_pack_co.paa` });
+  }
+  if(options?.addons?.includes('carrierRigSpecial')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'carrier_rig_special_co.paa')), { name: `${classifyName}/Data/carrier_rig_special_co.paa` });
+  }
+  if(options?.addons?.includes('carrierRig')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'carrier_rig_co.paa')), { name: `${classifyName}/Data/carrier_rig_co.paa` });
+  }
+  if(options?.addons?.includes('helmetBlufor')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'helmet_blufor_co.paa')), { name: `${classifyName}/Data/helmet_blufor_co.paa` });
   }
 
   // Create post-build addon file structure
