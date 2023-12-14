@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbijx%2FARMA-3-Camo-Mod-Maker%2Fmaster%2Fpackage.json%3Ftoken%3DGHSAT0AAAAAACJNQ37N5WGYEWKQL4JVNHUKZL2VZGA&query=%24.version&label=version&color=green)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![Discord](https://img.shields.io/discord/1027470084278603797?label=Discord&color=7289da)
+[![Discord](https://img.shields.io/discord/1027470084278603797?label=Discord&color=7289da)](https://discord.gg/zVQVKJM4dk)
 
 
 # ARMA 3 Camo Mod Maker
