@@ -35,6 +35,9 @@ header {
   border: 1px solid #444;
   padding: 10px;
   margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
 .checkbox-group legend {

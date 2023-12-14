@@ -20,7 +20,7 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
     width: 500,
-    height: 700,
+    height: 750,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -30,7 +30,8 @@ function createWindow () {
   win.setMenuBarVisibility(false);
   win.setResizable(false);
   
-  win.webContents.openDevTools()
+  // Uncomment to open dev tools
+  // win.webContents.openDevTools()
 
 
   // Load the index.html of the app.

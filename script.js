@@ -18,6 +18,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   const includeAssaultPack = document.querySelector('input[name="assaultPack"]').checked;
   const includeCarrierRig = document.querySelector('input[name="carrierRig"]').checked;
   const includeSpecialCarrierRig = document.querySelector('input[name="carrierRigSpecial"]').checked;
+  const includeHelmet = document.querySelector('input[name="helmetBlufor"]').checked;
   const blendedNormals = document.querySelector('input[name="blendUniform"]').checked;
 
   // Check for missing inputs
@@ -37,6 +38,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   // Show loading bar
   document.getElementById('progressBar').style.display = 'block';
   document.getElementById('progressStatus').style.display = 'block';
+  document.getElementById('createModButton').disabled = true;
 
   // Copy the image file to the texture folder
   const destinationPath = path.join(__dirname, 'texture/texture.png');
@@ -48,6 +50,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   if (includeAssaultPack) addons.push('assaultPack');
   if (includeSpecialCarrierRig) addons.push('carrierRigSpecial');
   if (includeCarrierRig) addons.push('carrierRig');
+  if (includeHelmet) addons.push('helmetBlufor');
 
   ipcRenderer.send('create-mod', { className: modName, author: authorName, options: { blendedNormals, addons } });
 
@@ -62,5 +65,6 @@ document.getElementById('createModButton').addEventListener('click', function() 
     // Hide loading bar
     document.getElementById('progressBar').style.display = 'none';
     document.getElementById('progressStatus').style.display = 'none';
+    document.getElementById('createModButton').disabled = false;
   });
 });

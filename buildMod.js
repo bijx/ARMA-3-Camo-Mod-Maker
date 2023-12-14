@@ -57,6 +57,13 @@ async function main(className, author, options = {}, onProgress) {
       path.join(outputPath, 'carrier_rig_co.png'),
       { blendNormal: options?.blendedNormals ?? false }
     ),
+    helmetBlufor: () => createBaseUniform(
+      path.join(assetsBasePath, 'helmetBlufor', 'helmetBluforBase.png'),
+      texture,
+      path.join(assetsBasePath, 'helmetBlufor', 'helmetBluforNormals.png'),
+      path.join(outputPath, 'helmet_blufor_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
   };
 
   const promises = options?.addons
@@ -112,6 +119,9 @@ async function main(className, author, options = {}, onProgress) {
   }
   if(options?.addons?.includes('carrierRig')) {
     archive.append(fs.createReadStream(path.join(outputPath, 'carrier_rig_co.paa')), { name: `${classifyName}/Data/carrier_rig_co.paa` });
+  }
+  if(options?.addons?.includes('helmetBlufor')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'helmet_blufor_co.paa')), { name: `${classifyName}/Data/helmet_blufor_co.paa` });
   }
 
   // Create post-build addon file structure

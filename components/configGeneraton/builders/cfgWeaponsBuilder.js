@@ -93,7 +93,36 @@ module.exports = function cfgWeaponsBuilder(className, author, addons) {
 			mass=80;
 		};
 	};
-    `
+    `,
+    helmetBlufor: `
+    class HeadgearItem;
+    class H_HelmetB;
+    class ${className}_HelmetBlufor: H_HelmetB
+	{
+		author="${author}";
+		scope=2;
+		displayName="${className} Combat Helmet";
+		model="\\A3\\Characters_F\\BLUFOR\\headgear_b_helmet_plain.p3d";
+		picture="${className}\\UI\\icon.paa";
+		hiddenSelections[]=
+		{
+			"camo"
+		};
+		hiddenSelectionsTextures[]=
+		{
+			"${className}\\Data\\helmet_blufor_co.paa"
+		};
+		class ItemInfo: HeadgearItem
+		{
+			mass=30;
+			uniformModel="\\A3\\Characters_F\\BLUFOR\\headgear_b_helmet_plain.p3d";
+			hiddenSelections[]=
+			{
+				"camo"
+			};
+		};
+	};
+    `,
   };
 
   
