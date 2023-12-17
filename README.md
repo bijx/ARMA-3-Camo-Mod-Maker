@@ -11,6 +11,8 @@ A standalone application that allows you to create a uniform addon for ARMA 3 ba
 
 ## Installation
 
+[![Quickstart Tutorial Link / Youtube](https://imgur.com/de36Tbt.png)](https://www.youtube.com/watch?v=YmnWlXN-fB4)
+
 **Supported OS:** Currently, only Windows OS is supported. Future updates may include support for MacOS and Linux.
 
 **Prerequisites:** 
