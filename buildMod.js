@@ -74,7 +74,7 @@ async function main(className, author, options = {}, onProgress) {
   promises.push(makeIcon(texture, path.join(outputPath, 'icon.png')));
 
   await Promise.all(promises);
-  onProgress({ value: 65, message: 'Converting textures to PAA using Pac2PalE...' });
+  onProgress({ value: 65, message: 'Converting textures to PAA using Pal2PacE...' });
 
   // Convert images to .paa files (using Pal2PacE)
   await processImages(outputPath);
