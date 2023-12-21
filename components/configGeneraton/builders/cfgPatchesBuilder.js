@@ -13,6 +13,7 @@ module.exports = function cfgPatchesBuilder(className, addons) {
     carrierRigSpecial: 'A3_Characters_F',
     carrierRig: 'A3_Characters_F',
     helmetBlufor: 'A3_Characters_F',
+    civCoveralls: 'A3_Characters_F',
   };
 
   const requiredAddonsArray = Array.from(new Set(addons.map(addon => addonMappings[addon]).filter(Boolean)));
