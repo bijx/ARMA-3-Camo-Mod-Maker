@@ -31,7 +31,7 @@ function createWindow () {
   win.setResizable(false);
   
   // Uncomment to open dev tools
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
 
   // Load the index.html of the app.

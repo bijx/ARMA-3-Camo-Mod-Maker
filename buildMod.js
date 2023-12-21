@@ -64,6 +64,13 @@ async function main(className, author, options = {}, onProgress) {
       path.join(outputPath, 'helmet_blufor_co.png'),
       { blendNormal: options?.blendedNormals ?? false }
     ),
+    civCoveralls: () => createBaseUniform(
+      path.join(assetsBasePath, 'civCoveralls', 'civCoverallsBase.png'),
+      texture,
+      path.join(assetsBasePath, 'civCoveralls', 'civCoverallsNormals.png'),
+      path.join(outputPath, 'civ_coveralls_co.png'),
+      { blendNormal: options?.blendedNormals ?? false }
+    ),
   };
 
   const promises = options?.addons
@@ -122,6 +129,9 @@ async function main(className, author, options = {}, onProgress) {
   }
   if(options?.addons?.includes('helmetBlufor')) {
     archive.append(fs.createReadStream(path.join(outputPath, 'helmet_blufor_co.paa')), { name: `${classifyName}/Data/helmet_blufor_co.paa` });
+  }
+  if(options?.addons?.includes('civCoveralls')) {
+    archive.append(fs.createReadStream(path.join(outputPath, 'civ_coveralls_co.paa')), { name: `${classifyName}/Data/civ_coveralls_co.paa` });
   }
 
   // Create post-build addon file structure
