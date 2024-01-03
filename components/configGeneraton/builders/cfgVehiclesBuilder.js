@@ -43,6 +43,22 @@ module.exports = function cfgVehiclesBuilder(className, author, addons) {
         hiddenSelectionsMaterials[] = {"${className}\\Data\\indepUniform.rvmat"};
     };
 `,
+    civCoveralls: `
+    class C_man_w_worker_F;
+
+    class ${className}_CivCoveralls: C_man_w_worker_F {
+        author = "${author}";
+        vehicleClass = "${className}";
+        scope = 1;
+        displayName = "${className} Unit Base";
+        identityTypes[] = {"Head_NATO", "G_NATO_default"};
+        genericNames = "NATOMen";
+        model = "\\A3\\characters_f\\Common\\coveralls.p3d";
+        uniformClass = "${className}_CivCoveralls";
+        hiddenSelections[] = {"Camo","Insignia"};
+        hiddenSelectionsTextures[] = {"${className}\\Data\\civ_coveralls_co.paa"};
+    };
+`,
     assaultPack: `
     class Bag_Base;
     class B_AssaultPack_Base;

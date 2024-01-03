@@ -15,6 +15,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   const textureFile = document.getElementById('textureFile').files[0];
   const includeBaseUniform = document.querySelector('input[name="baseUniform"]').checked;
   const includeIndepUniform = document.querySelector('input[name="indepUniform"]').checked;
+  const includeCoveralls = document.querySelector('input[name="civCoveralls"]').checked;
   const includeAssaultPack = document.querySelector('input[name="assaultPack"]').checked;
   const includeCarrierRig = document.querySelector('input[name="carrierRig"]').checked;
   const includeSpecialCarrierRig = document.querySelector('input[name="carrierRigSpecial"]').checked;
@@ -51,6 +52,7 @@ document.getElementById('createModButton').addEventListener('click', function() 
   if (includeSpecialCarrierRig) addons.push('carrierRigSpecial');
   if (includeCarrierRig) addons.push('carrierRig');
   if (includeHelmet) addons.push('helmetBlufor');
+  if (includeCoveralls) addons.push('civCoveralls');
 
   ipcRenderer.send('create-mod', { className: modName, author: authorName, options: { blendedNormals, addons } });
 

@@ -38,6 +38,21 @@ module.exports = function cfgWeaponsBuilder(className, author, addons) {
         }; 
     };
     `,
+    civCoveralls: `
+    class ${className}_CivCoveralls: Uniform_Base 
+    { 
+        scope = 2;
+        author = "${author}";
+        displayName = "${className} Coveralls";
+        picture = "${className}\\UI\\icon.paa";
+        model = "\\A3\\characters_f\\Common\\coveralls.p3d"; 
+        class ItemInfo : UniformItem { 
+            uniformClass = "${className}_CivCoveralls"; 
+            containerClass = "Supply50";
+            mass = 50;
+        }; 
+    };
+    `,
     carrierRigSpecial: `
     class ${className}_CarrierRig_Special: Vest_Camo_Base
 	{
