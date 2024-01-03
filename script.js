@@ -9,6 +9,10 @@ ipcRenderer.on('update-progress', (event, progress) => {
   progressStatus.innerText = progress.message;
 });
 
+ipcRenderer.on('update-check-reply', (event, message) => {
+  alert(message);
+});
+
 document.getElementById('createModButton').addEventListener('click', function() {
   const modName = document.getElementById('modName').value;
   const authorName = document.getElementById('authorName').value;

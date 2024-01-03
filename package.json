@@ -20,7 +20,8 @@
   "dependencies": {
     "archiver": "^6.0.1",
     "img2pac": "^0.1.0",
-    "jimp": "^0.22.10"
+    "jimp": "^0.22.10",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "electron": "^28.0.0"
