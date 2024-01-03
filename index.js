@@ -1,7 +1,8 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const { ipcMain } = require('electron');
 const main = require('./buildMod');
 const path = require('path');
+const fetch = require('node-fetch');
 
 let win; // Keep a reference to the main window
 
@@ -27,8 +28,26 @@ function createWindow () {
     },
     icon: path.join(__dirname, 'logo.png')
   })
-  win.setMenuBarVisibility(false);
+  // win.setMenuBarVisibility(false);
   win.setResizable(false);
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'Help',
+      submenu: [
+        {
+          label: 'Check for Updates',
+          click: checkForUpdates    
+        },
+        {
+          label: 'Tutorial',
+          click: () => {
+            require('electron').shell.openExternal('https://github.com/bijx/ARMA-3-Camo-Mod-Maker?tab=readme-ov-file#usage')
+          }
+        }
+      ]
+    }
+  ]);
+  Menu.setApplicationMenu(menu);
   
   // Uncomment to open dev tools
   // win.webContents.openDevTools()
@@ -55,3 +74,24 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
+
+async function checkForUpdates() {
+  const remotePackageUrl = 'https://raw.githubusercontent.com/bijx/ARMA-3-Camo-Mod-Maker/master/package.json';
+  
+  try {
+    const response = await fetch(remotePackageUrl);
+    const remotePackage = await response.json();
+    const localVersion = require('./package.json').version;
+
+    if (remotePackage.version !== localVersion) {
+      // Version mismatch, open GitHub releases page
+      require('electron').shell.openExternal('https://github.com/bijx/ARMA-3-Camo-Mod-Maker/releases');
+      win.webContents.send('update-check-reply', `There is a new update available!\nLocal version: ${localVersion}\nLatest version: ${remotePackage.version}`);
+    } else {
+      // Versions match, no update required
+      win.webContents.send('update-check-reply', 'You are using the latest version.');
+    }
+  } catch (error) {
+    win.webContents.send('update-check-reply', `Error checking for updates: ${error.message}`);
+  }
+}
